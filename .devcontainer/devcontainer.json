@@ -1,0 +1,52 @@
+{
+	"name": "Java",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"args": {
+			// Update the VARIANT arg to pick a Java version: 11, 15
+			"VARIANT": "11",
+			// Options
+			"INSTALL_MAVEN": "false",
+			"INSTALL_GRADLE": "false",
+			"INSTALL_NODE": "false",
+			"NODE_VERSION": "lts/*"
+		}
+	},
+	"mounts": [
+		"source=${env:HOME}${env:USERPROFILE}/.m2,target=/home/vscode/.m2,type=bind,consistency=cached"
+	],
+	// Set *default* container specific settings.json values on container create.
+	"settings": { 
+		"terminal.integrated.shell.linux": "/bin/bash",
+		"java.home": "/docker-java-home"
+	},
+	
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"vscjava.vscode-java-pack",
+		"betterthantomorrow.calva",
+		"eamodio.gitlens",
+		"redhat.vscode-yaml",
+		"stkb.rewrap",
+		"yzhang.markdown-all-in-one",
+		"davidanson.vscode-markdownlint",
+		"streetsidesoftware.code-spell-checker",
+		"bpruitt-goddard.mermaid-markdown-syntax-highlighting",
+		"bierner.github-markdown-preview",
+		"bierner.markdown-mermaid",
+		"hediet.vscode-drawio",
+		"bierner.emojisense",
+		"yzane.markdown-pdf",
+		"tomoki1207.pdf",
+		"artdiniz.quitcontrol-vscode"
+	],
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "java -version",
+
+	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "vscode"
+}
